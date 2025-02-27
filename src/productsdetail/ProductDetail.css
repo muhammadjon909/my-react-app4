@@ -1,0 +1,151 @@
+/* UMUMIY STIL */
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    background: #f8faff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* SURAT QISMI */
+.image-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-image {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-image:hover {
+    transform: scale(1.05);
+}
+
+/* MAHSULOT MA'LUMOTLARI */
+.details-section {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* NOMI */
+.product-title {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* NARX, BREND VA REYTING KARTOCHKASI */
+.card {
+    width: 100%;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* NARX */
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e63946;
+}
+
+/* REYTING YULDUZLARI */
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #ffb400;
+}
+
+.star {
+    color: gold;
+    font-size: 1.5rem;
+}
+
+/* BRAND VA MODEL */
+.info {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.info span {
+    font-weight: bold;
+    color: #222;
+}
+
+/* TUGMALAR */
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-cart {
+    background: #00aa66;
+    color: white;
+}
+
+.btn-buy {
+    background: #0066cc;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-section,
+    .details-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
