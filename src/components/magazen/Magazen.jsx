@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Magazen.css";
 import { useTranslation } from "react-i18next";
 
-const Magazen = () => {
+const NeonCart = () => {
     const { cart, setCart } = useStateValue();
     const navigate = useNavigate();
 
@@ -21,43 +21,41 @@ const Magazen = () => {
         );
     };
 
-    const {t,i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
     return (
-        <div className="cart-container">
-            <h2>🛒 Savatcha</h2>
+        <div className="neon-cart-container">
+            <h2>🛒 Neon Cart</h2>
 
             {cart.length === 0 ? (
                 <p>{t("cartop")} 🛒</p>
             ) : (
-                <div className="cart-grid">
+                <div className="neon-cart-grid">
                     {cart.map((product) => (
-                        <div key={product.id} className="cart-box">
-                            <img src={product.thumbnail} alt={product.title} className="cart-img" />
+                        <div key={product.id} className="neon-cart-box">
+                            <img src={product.thumbnail} alt={product.title} className="neon-cart-img" />
                             <h5>{product.title}</h5>
                             <p> {t("prics")} : ${product.price * (product.quantity || 1)}</p>
                             <p> {t("ratings")} : {Array(Math.round(product.rating)).fill("⭐️").join("")}</p>
-
-                            {/* Mahsulot miqdori */}
                             <p> {t("countity")} : {product.quantity || 1}</p>
 
-                            <div className="cart-buttonss">
+                            <div className="neon-cart-buttons">
                                 <button
-                                    className="quantity-btn"
+                                    className="neon-quantity-btn"
                                     onClick={() => increaseQuantity(product.id)}
                                 >
                                     {t("Zakaz")}
                                 </button>
 
                                 <button
-                                    className="remove-btn"
+                                    className="neon-remove-btn"
                                     onClick={() => removeFromCart(product.id)}
                                 >
                                     {t("remove")}
                                 </button>
 
                                 <button
-                                    className="details-btn"
+                                    className="neon-details-btn"
                                     onClick={() => navigate(`/product/${product.id}`)}
                                 >
                                     ℹ️ {t("details")}
@@ -71,4 +69,4 @@ const Magazen = () => {
     );
 };
 
-export default Magazen;
+export default NeonCart;

@@ -5,9 +5,9 @@ import "./Carusel.css";
 import { useStateValue } from "../context";
 import { useTranslation } from "react-i18next";
 
-function CustomCarousel({ search }) {
-    const totalCarouselItems = 15;
-    const itemsPerPage = 5;
+function NeonCarousel({ search }) {
+    const totalCarouselItems = 16; // 4 ta card uchun 16 ta mahsulot (4 * 4)
+    const itemsPerPage = 4; // 4 ta card chiqadi
     const [index, setIndex] = useState(0);
     const [carouselProducts, setCarouselProducts] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
@@ -27,9 +27,7 @@ function CustomCarousel({ search }) {
             });
     }, []);
 
-
-    const {t,i18n} = useTranslation();
-
+    const { t, i18n } = useTranslation();
 
     const filteredProducts = sortedProducts.filter((product) =>
         product.title.toLowerCase().includes(search.toLowerCase())
@@ -113,96 +111,96 @@ function CustomCarousel({ search }) {
     return (
         <div>
             <div className="sort-buttons">
-                <button className="reginch" onClick={sortByPriceAsc}>{t("price")}</button>
-                <button className="reginch" onClick={sortByPriceDesc}>{t("pricetwo")}</button>
-                <button className="reginch" onClick={sortByRatingAsc}>{t("rating")}</button>
-                <button className="reginch" onClick={sortByRatingDesc}>{t("ratingtwo")}</button>
+                <button className="neon-btn" onClick={sortByPriceAsc}>{t("price")}</button>
+                <button className="neon-btn" onClick={sortByPriceDesc}>{t("pricetwo")}</button>
+                <button className="neon-btn" onClick={sortByRatingAsc}>{t("rating")}</button>
+                <button className="neon-btn" onClick={sortByRatingDesc}>{t("ratingtwo")}</button>
             </div>
 
-            <div className="carousel-container">
-                <button className="carousel-btn left" onClick={prevSlide} disabled={index === 0}>
+            <div className="neon-carousel-container">
+                <button className="neon-carousel-btn left" onClick={prevSlide} disabled={index === 0}>
                     ❮
                 </button>
 
-                <div className="carousel-wrapper">
+                <div className="neon-carousel-wrapper">
                     {carouselProducts.slice(index, index + itemsPerPage).map((product) => (
-                        <div key={product.id} className="carousel-box">
-                            <img src={product.thumbnail} alt={product.title} className="carousel-img" />
+                        <div key={product.id} className="neon-carousel-box" onClick={() => openModal(product)}>
+                            <img src={product.thumbnail} alt={product.title} className="neon-carousel-img" />
                             <h5>{product.title}</h5>
                             <p> {t("prics")} : ${product.price}</p>
                             <p> {t("ratings")} : {renderStars(Math.round(product.rating))}</p>
 
                             <button
-                                className="wishlistbtn"
+                                className="neon-wishlist-btn"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     addWishlist(product);
                                 }}
                             >
-                                ❤️ {t("wishlist")}
+                                ❤️ {t("like")}
                             </button>
 
                             <button
-                                className="cartbtn"
+                                className="neon-cart-btn"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     addToCart(product);
                                 }}
                             >
-                                🛒 {t("savat")}
+                                🛒 {t("karzina")}
                             </button>
                         </div>
                     ))}
                 </div>
 
-                <button className="carousel-btn right" onClick={nextSlide} disabled={index >= totalCarouselItems - itemsPerPage}>
+                <button className="neon-carousel-btn right" onClick={nextSlide} disabled={index >= totalCarouselItems - itemsPerPage}>
                     ❯
                 </button>
             </div>
 
             {showModal && selectedProduct && (
-                <div className="modal-overlay">
-                    <div className="modal-content">
-                        <button className="modal-close" onClick={closeModal}>✖️</button>
-                        <div className="modal-img-container">
-                            <img src={selectedProduct.thumbnail} alt={selectedProduct.title} className="modal-img" />
+                <div className="neon-modal-overlay">
+                    <div className="neon-modal-content">
+                        <button className="neon-modal-close" onClick={closeModal}>✖️</button>
+                        <div className="neon-modal-img-container">
+                            <img src={selectedProduct.thumbnail} alt={selectedProduct.title} className="neon-modal-img" />
                         </div>
                         <h5>{selectedProduct.title}</h5>
                         <p>{selectedProduct.description}</p>
                         <p> {t("prics")} : ${selectedProduct.price}</p>
                         <p> {t("ratings")} : {renderStars(Math.round(selectedProduct.rating))}</p>
-                        <button className="reginch" onClick={() => navigate(`/product/${selectedProduct.id}`)}>
+                        <button className="neon-btn" onClick={() => navigate(`/product/${selectedProduct.id}`)}>
                             {t("modalbtn")}
                         </button>
                     </div>
                 </div>
             )}
 
-            <div className="products_div">
+            <div className="neon-products-grid">
                 {filteredProducts.map((product) => (
-                    <div key={product.id} className="bx_div" onClick={() => openModal(product)}>
-                        <img src={product.thumbnail} alt={product.title} className="product-img" />
+                    <div key={product.id} className="neon-product-box" onClick={() => openModal(product)}>
+                        <img src={product.thumbnail} alt={product.title} className="neon-product-img" />
                         <h5>{product.title}</h5>
                         <p> {t("prics")} : ${product.price}</p>
                         <p> {t("ratings")} : {renderStars(Math.round(product.rating))}</p>
                         <button
-                            className="wishlistbtn"
+                            className="neon-wishlist-btn"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 addWishlist(product);
                             }}
                         >
-                            ❤️ {t("wishlist")}
+                            ❤️ {t("like")}
                         </button>
 
                         <button
-                            className="cartbtn"
+                            className="neon-cart-btn"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 addToCart(product);
                             }}
                         >
-                            🛒 {t("savat")}
+                            🛒 {t("karzina")}
                         </button>
                     </div>
                 ))}
@@ -211,4 +209,4 @@ function CustomCarousel({ search }) {
     );
 }
 
-export default CustomCarousel;
+export default NeonCarousel;

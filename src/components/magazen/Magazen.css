@@ -1,71 +1,82 @@
-.cart-container {
+.neon-cart-container {
     padding: 20px;
     text-align: center;
+    background: linear-gradient(145deg, #1e1e2f, #2a2a40);
+    border-radius: 15px;
+    margin: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.cart-grid {
+.neon-cart-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
 }
 
-.cart-box {
-    border: 1px solid #ddd;
-    border-radius: 8px;
+.neon-cart-box {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
     width: 270px;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cart-img {
+.neon-cart-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.neon-cart-img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-.cart-buttonss {
+.neon-cart-buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
-.quantity-btn, .remove-btn, .details-btn {
+.neon-quantity-btn,
+.neon-remove-btn,
+.neon-details-btn {
     padding: 8px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
-.quantity-btn {
-    background-color: #007bff;
-    color: white;
+.neon-quantity-btn {
+    background: #007bff;
+    color: #fff;
 }
 
-.quantity-btn:hover {
-    background-color: #0056b3;
+.neon-quantity-btn:hover {
+    background: #0056b3;
 }
 
-.remove-btn {
-    background-color: #ff4d4d;
-    color: white;
+.neon-remove-btn {
+    background: #ff4d4d;
+    color: #fff;
 }
 
-.remove-btn:hover {
-    background-color: #cc0000;
+.neon-remove-btn:hover {
+    background: #ff1a1a;
 }
 
-.details-btn {
-    background-color: #4CAF50;
-    color: white;
+.neon-details-btn {
+    background: #4CAF50;
+    color: #fff;
 }
 
-.details-btn:hover {
-    background-color: #45a049;
+.neon-details-btn:hover {
+    background: #45a049;
 }
